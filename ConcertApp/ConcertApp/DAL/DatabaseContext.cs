@@ -1,4 +1,5 @@
-﻿using ConcertApp.DAL.Entities;
+﻿using System.Diagnostics.Metrics;
+using ConcertApp.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ConcertApp.DAL
@@ -10,5 +11,11 @@ namespace ConcertApp.DAL
             
         }
         public DbSet<Tickets> Tickets { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Tickets>().HasIndex(t => t.Id).IsUnique();          
+        }
     }
 }
