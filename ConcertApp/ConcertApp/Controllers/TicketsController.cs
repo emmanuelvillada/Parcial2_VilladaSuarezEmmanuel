@@ -102,10 +102,48 @@ namespace ConcertApp.Controllers
                 ViewBag.Mensaje = "Boleta no válida.";
                 return View(tickets);
             }
-            else { return View(tickets); }
+            else 
+            {
+
+                return View("ValidateEdit", tickets) ; 
+            }
             
         }
-       
+
+        //Validate Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ValidateTicket(Guid id, Tickets tickets)
+        {
+            if (id != tickets.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(tickets);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TicketsExists(tickets.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(tickets);
+        }
+
+
 
         // POST: Tickets/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
