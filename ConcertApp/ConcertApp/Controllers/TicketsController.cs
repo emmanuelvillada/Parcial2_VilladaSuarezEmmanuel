@@ -113,7 +113,7 @@ namespace ConcertApp.Controllers
         //Validate Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ValidateTicket(Guid id, Tickets tickets)
+        public async Task<IActionResult> ValidateEditTicket(Guid id, Tickets tickets)
         {
             if (id != tickets.Id)
             {
@@ -124,6 +124,8 @@ namespace ConcertApp.Controllers
             {
                 try
                 {
+                    tickets.UsedDate = DateTime.Now;
+                    tickets.IsUsed = true;
                     _context.Update(tickets);
                     await _context.SaveChangesAsync();
                 }
