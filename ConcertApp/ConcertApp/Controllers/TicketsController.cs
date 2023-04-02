@@ -56,7 +56,7 @@ namespace ConcertApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UsedDate,IsUsed,EntranceGate")] Tickets tickets)
+        public async Task<IActionResult> Create( Tickets tickets)
         {
             if (ModelState.IsValid)
             {
@@ -83,13 +83,36 @@ namespace ConcertApp.Controllers
             }
             return View(tickets);
         }
+        // GET: Tickets/Edit/5
+        public async Task<IActionResult> ValidateTicket(Guid? id)
+        {
+            if (id == null || _context.Tickets == null)
+            {
+                return NotFound();
+            }
+
+            var tickets = await _context.Tickets.FindAsync(id);
+            if (tickets == null)
+            {
+                return NotFound();
+            }
+
+            if(tickets.IsUsed) 
+            {
+                ViewBag.Mensaje = "Boleta no válida.";
+                return View(tickets);
+            }
+            else { return View(tickets); }
+            
+        }
+       
 
         // POST: Tickets/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,UsedDate,IsUsed,EntranceGate")] Tickets tickets)
+        public async Task<IActionResult> Edit(Guid id, Tickets tickets)
         {
             if (id != tickets.Id)
             {
