@@ -19,18 +19,18 @@ namespace Parcial3.Dal
 		public async Task SeederAsync()
 		{
 			await _context.Database.EnsureCreatedAsync(); // me reemplaza el comando update-database
-			await PopulateCategoriesAsync();
+			await PopulateServicesAsync();
 			await PopulateCountriesAsync();
 			await PopulateRolesAsync();
 			await PopulateUserAsync("Admin", "Role", "admin_role@yopmail.com", "3002323232", "Street Fighter 1", "102030", UserType.Admin);
-			await PopulateUserAsync("User", "Role", "user_role@yopmail.com", "40056566756", "Street Fighter 2", "405060", UserType.User);
+			await PopulateUserAsync("Client", "Role", "client_role@yopmail.com", "40056566756", "Street Fighter 2", "405060", UserType.Client);
 
 			await _context.SaveChangesAsync();
 		}
 
-		private async Task PopulateCategoriesAsync()
+		private async Task PopulateServicesAsync()
 		{
-			if (!_context.Categories.Any())
+			if (!_context.Services.Any())
 			{
 				_context.Categories.Add(new Category { Name = "Tecnología", Description = "Elementos tech", CreatedDate = DateTime.Now });
 				_context.Categories.Add(new Category { Name = "Implementos de Aseo", Description = "Detergente, jabón, etc.", CreatedDate = DateTime.Now });

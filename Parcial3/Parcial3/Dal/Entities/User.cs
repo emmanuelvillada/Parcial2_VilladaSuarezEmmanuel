@@ -27,8 +27,8 @@ namespace Parcial3.Dal.Entities
 		[Required(ErrorMessage = "El campo {0} es obligatorio.")]
 		public string LastName { get; set; }
 
-		[Display(Name = "Ciudad")]
-		public City City { get; set; }
+		[Display(Name = "Vehiculo")]
+		public  Vehicle Vehicle { get; set; }
 
 		[Display(Name = "Dirección")]
 		[MaxLength(200, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
@@ -52,5 +52,7 @@ namespace Parcial3.Dal.Entities
 
 		[Display(Name = "Usuario")]
 		public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
+
 	}
 }
+
