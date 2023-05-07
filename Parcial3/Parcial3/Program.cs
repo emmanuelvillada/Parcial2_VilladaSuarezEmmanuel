@@ -44,7 +44,7 @@ options.AccessDeniedPath = "/Account/Unauthorized";
 builder.Services.AddTransient<SeederDb>();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
 builder.Services.AddScoped<IDropDownListsHelper, DropDownListsHelper>();
-builder.Services.AddScoped<IAzureBlobHelper, AzureBlobHelper>();
+
 
 
 var app = builder.Build();

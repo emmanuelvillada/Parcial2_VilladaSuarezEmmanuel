@@ -28,16 +28,16 @@
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Client"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Ac" asp-action="Index">Servicios para su vehiculo</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ClientController" asp-action="addVehicle_services">Servicios para su vehiculo</a>
                             </li>
                              <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Ac" asp-action="Index">Estado de su servicio</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ClientController" asp-action="Index">Estado de su servicio</a>
                             </li>
                         }
                         else if (User.Identity.IsAuthenticated && User.IsInRole("Client"))
                         {
                              <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Ac" asp-action="Index">Servicios en proceso</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AdminController" asp-action="Index">Servicios en proceso</a>
                             </li>  
                         }
 
