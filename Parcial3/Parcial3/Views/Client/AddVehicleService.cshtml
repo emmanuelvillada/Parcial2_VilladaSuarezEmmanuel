@@ -1,0 +1,43 @@
+﻿@model Parcial3.Models.VehicleServiceModel
+
+@{
+    ViewData["Title"] = "Añadir servicio";
+}
+
+<h2>Añadir</h2>
+
+<h4>Servicio</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="addVehicle_services" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UserType" />
+            <input type="hidden" asp-for="ServiceId" />
+            
+
+            <div class="form-group">
+                <label asp-for="Owner" class="control-label"></label>
+                <input asp-for="Owner" class="form-control" />
+                <span asp-validation-for="Propietario" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NumberPlate" class="control-label"></label>
+                        <input asp-for="NumberPlate" class="form-control" />
+                        <span asp-validation-for="Placa" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="form-group mt-2">
+                <input type="submit" value="Guardar" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>

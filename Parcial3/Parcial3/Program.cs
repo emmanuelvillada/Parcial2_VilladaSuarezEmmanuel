@@ -41,7 +41,7 @@ options.AccessDeniedPath = "/Account/Unauthorized";
 
 
 
-//builder.Services.AddTransient<SeederDb>();
+builder.Services.AddTransient<SeederDb>();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
 builder.Services.AddScoped<IDropDownListsHelper, DropDownListsHelper>();
 builder.Services.AddScoped<IAzureBlobHelper, AzureBlobHelper>();
@@ -54,11 +54,11 @@ void SeederData()
 {
 	IServiceScopeFactory? scopedFactory = app.Services.GetService<IServiceScopeFactory>();
 
-	//using (IServiceScope? scope = scopedFactory.CreateScope())
-	//{
-	//	SeederDb? service = scope.ServiceProvider.GetService<SeederDb>();
-	//	service.SeederAsync().Wait();
-	//}
+	using (IServiceScope? scope = scopedFactory.CreateScope())
+	{
+		SeederDb? service = scope.ServiceProvider.GetService<SeederDb>();
+		service.SeederAsync().Wait();
+	}
 
 	// Configure the HTTP request pipeline.
 	if (!app.Environment.IsDevelopment())

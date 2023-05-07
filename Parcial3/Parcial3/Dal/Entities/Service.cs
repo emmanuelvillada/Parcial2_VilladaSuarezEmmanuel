@@ -5,11 +5,12 @@ namespace Parcial3.Dal.Entities
     public class Service: IdEntity
     {
         [Display(Name = "Nombre del servicio")]
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         [Display(Name = "Precio")]
-        public String Price { get; set; }
+        public string Price { get; set; }
 
-
+        [Display(Name = "Vehiculos")]
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }
