@@ -10,12 +10,13 @@ namespace Parcial3.Dal.Entities
 		public Guid Id { get; set; }
 
 		[Display(Name = "Servicio")]
-		public Services ServiceId { get; set; }
+		public Service ServiceId { get; set; }
 
 		[Display(Name = "Propietario")]
 		public string? Owner { get; set; }
 
 		[Display(Name ="Placa")]
 		public string? NumberPlate { get; set; }
+
 	}
 }

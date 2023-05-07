@@ -15,6 +15,6 @@ namespace Parcial3.Dal.Entities
 
 		[Display (Name = "Precio")]
 		[Required(ErrorMessage = "El campo {0} es oblilgatorio.")]
-		public decimal Price { get; set; }
+		public String Price { get; set; }
 	}
 }

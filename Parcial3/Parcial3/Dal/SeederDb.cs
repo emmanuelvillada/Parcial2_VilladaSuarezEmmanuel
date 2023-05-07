@@ -20,106 +20,49 @@ namespace Parcial3.Dal
 		{
 			await _context.Database.EnsureCreatedAsync(); // me reemplaza el comando update-database
 			await PopulateServicesAsync();
-			await PopulateCountriesAsync();
-			await PopulateRolesAsync();
+			await PopulateVehiclesAsync();
+			await PopulateVehiclesDetailAsync();
 			await PopulateUserAsync("Admin", "Role", "admin_role@yopmail.com", "3002323232", "Street Fighter 1", "102030", UserType.Admin);
 			await PopulateUserAsync("Client", "Role", "client_role@yopmail.com", "40056566756", "Street Fighter 2", "405060", UserType.Client);
 
 			await _context.SaveChangesAsync();
 		}
 
+		
+
 		private async Task PopulateServicesAsync()
 		{
 			if (!_context.Services.Any())
 			{
-				_context.Categories.Add(new Category { Name = "Tecnología", Description = "Elementos tech", CreatedDate = DateTime.Now });
-				_context.Categories.Add(new Category { Name = "Implementos de Aseo", Description = "Detergente, jabón, etc.", CreatedDate = DateTime.Now });
-				_context.Categories.Add(new Category { Name = "Ropa interior", Description = "Tanguitas, narizonas", CreatedDate = DateTime.Now });
-				_context.Categories.Add(new Category { Name = "Gamers", Description = "PS5, XBOX SERIES", CreatedDate = DateTime.Now });
-				_context.Categories.Add(new Category { Name = "Mascotas", Description = "Concentrado, jabón para pulgas.", CreatedDate = DateTime.Now });
+				_context.Services.Add(new Service { Name = "Lavada simple", Price = "$250000" });
+				_context.Services.Add(new Service { Name = "Lavada + Polishada", Price = "$50000"});
+				_context.Services.Add(new Service { Name = "Lavada + aspirada de la cojineria", Price = "$30000" });
+				_context.Services.Add(new Service { Name = "Lavada Full", Price = "$65000" });
+				_context.Services.Add(new Service { Name = "Lavada en seco del motor", Price = "$80000" });
+				_context.Services.Add(new Service { Name = "Lavada chasis", Price = "$90000" });
+
 			}
 		}
-		private async Task PopulateCountriesAsync()
+		private async Task PopulateVehiclesAsync()
 		{
-			if (!_context.Countries.Any())
+			if (!_context.Vehicles.Any()) 
 			{
-				_context.Countries.Add(new Country
-				{
-					CreatedDate = DateTime.Now,
-					Name = "Colombia",
-					States = new List<State>()
-					{
-						new State
-						{
-							CreatedDate = DateTime.Now,
-							Name = "Antioquia",
-							Cities = new List<City>()
-							{
-								new City { Name = "Medellín", CreatedDate = DateTime.Now },
-								new City { Name = "Envigado", CreatedDate = DateTime.Now },
-								new City { Name = "Bello", CreatedDate = DateTime.Now },
-								new City { Name = "Itagüí", CreatedDate = DateTime.Now },
-								new City { Name = "Barbosa", CreatedDate = DateTime.Now },
-								new City { Name = "Copacabana", CreatedDate = DateTime.Now },
-								new City { Name = "Girardota", CreatedDate = DateTime.Now },
-								new City { Name = "Sabaneta", CreatedDate = DateTime.Now },
-							}
-						},
+				_context.Vehicles.Add(new Vehicle { Owner = "Emmanuel Villada", NumberPlate = "GFE 063" });
+			}
+		}
 
-						new State
-						{
-							CreatedDate = DateTime.Now,
-							Name = "Cundinamarca",
-							Cities = new List<City>()
-							{
-								new City { Name = "Bogotá", CreatedDate = DateTime.Now },
-								new City { Name = "Engativá", CreatedDate = DateTime.Now },
-								new City { Name = "Fusagasugá", CreatedDate = DateTime.Now },
-								new City { Name = "Villeta", CreatedDate = DateTime.Now },
-							}
-						}
-					}
-				});
-
-				_context.Countries.Add(new Country
-				{
-					CreatedDate = DateTime.Now,
-					Name = "Argentina",
-					States = new List<State>()
-					{
-						new State
-						{
-							CreatedDate = DateTime.Now,
-							Name = "Buenos Aires",
-							Cities = new List<City>()
-							{
-								new City { Name = "Alberti", CreatedDate = DateTime.Now },
-								new City { Name = "Avellaneda", CreatedDate = DateTime.Now },
-								new City { Name = "Bahía Blanca", CreatedDate = DateTime.Now },
-								new City { Name = "Ezeiza", CreatedDate = DateTime.Now },
-							}
-						},
-
-						new State
-						{
-							Name = "La Pampa",
-							Cities = new List<City>()
-							{
-								new City { Name = "Parera", CreatedDate = DateTime.Now },
-								new City { Name = "Santa Isabel", CreatedDate = DateTime.Now },
-								new City { Name = "Puelches", CreatedDate = DateTime.Now },
-								new City { Name = "La Adela", CreatedDate = DateTime.Now },
-							}
-						}
-					}
-				});
+		private async Task PopulateVehiclesDetailAsync()
+		{
+			if (!_context.VehiclesDetails.Any()) 
+			{
+				_context.VehiclesDetails.Add(new VehicleDetail { CreationDate= DateTime.Now,  });
 			}
 		}
 
 		private async Task PopulateRolesAsync()
 		{
 			await _userHelper.CheckRoleAsync(UserType.Admin.ToString());
-			await _userHelper.CheckRoleAsync(UserType.User.ToString());
+			await _userHelper.CheckRoleAsync(UserType.Client.ToString());
 		}
 
 		private async Task PopulateUserAsync(
@@ -145,7 +88,7 @@ namespace Parcial3.Dal
 					PhoneNumber = phone,
 					Address = address,
 					Document = document,
-					City = _context.Cities.FirstOrDefault(),
+					Vehicle = _context.Vehicles.FirstOrDefault(),
 					UserType = userType,
 				};
 
