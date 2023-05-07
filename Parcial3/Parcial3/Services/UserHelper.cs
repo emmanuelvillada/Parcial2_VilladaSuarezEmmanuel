@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Parcial3.Dal;
 using Parcial3.Dal.Entities;
 using Parcial3.Helpers;
+using Parcial3.Models;
 
 namespace Parcial3.Services
 {
@@ -43,7 +44,7 @@ namespace Parcial3.Services
 		public async Task<User> GetUserAsync(string email)
 		{
 			return await _context.Users
-				 .Include(u => u.City)
+				 .Include(u => u.Vehicle)
 				 .FirstOrDefaultAsync(u => u.Email == email);
 		}
 
