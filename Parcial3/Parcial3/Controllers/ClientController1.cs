@@ -9,7 +9,7 @@ using Parcial3.Models;
 
 namespace Parcial3.Controllers
 {
-    [Authorize (Roles ="Client")]
+    [Authorize(Roles = "Client")]
     public class ClientController : Controller
     {
         private readonly IUserHelper _userHelper;
@@ -25,13 +25,15 @@ namespace Parcial3.Controllers
             _azureBlobHelper = azureBlobHelper;
         }
 
+        // GET: VehicleDetails
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users
-                .Include(v => v.Vehicle)
-                .ThenInclude(s => s.Service)
-                //.ThenInclude(b => b.Vehicle)
-                .ToListAsync());
+            return _context.VehiclesDetails != null ?
+                        View(await _context.VehiclesDetails
+                        .Include(c => c.Vehicle)
+                        .ThenInclude(v => v.Service)
+                        .ToListAsync()) :
+                        Problem("Entity set 'DatabaseContext.States'  is null.");
         }
 
         [HttpGet]
@@ -42,7 +44,7 @@ namespace Parcial3.Controllers
             VehicleServiceModel vehicleServiceModel = new()
             {
                 Id = Guid.Empty,
-                Services = await _ddlHelper.GetDDLServicesAsync(),              
+                Services = await _ddlHelper.GetDDLServicesAsync(),
                 UserType = UserType.Client,
             };
 
@@ -63,7 +65,7 @@ namespace Parcial3.Controllers
                 };
                 try
                 {
-                   
+
                     _context.Add(vehicle);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -85,10 +87,37 @@ namespace Parcial3.Controllers
                 }
             }
             return View(Index);
+        }
 
+          
 
+            // GET: VehicleDetails
+            public async Task<IActionResult> Details()
+            {
+                if (_context.VehiclesDetails == null)
+                {
+                    return NotFound();
+                }
+                User user = await _userHelper.GetUserAsync(User.Identity.Name);
+                var nameUser = "";
+                if (user != null)
+                {
+                    nameUser = user.FullName;
+                }
+
+                var vehicleDetails = await _context.VehiclesDetails
+                    .Include(d => d.Vehicle)
+                    .ThenInclude(v => v.Service)
+                    .FirstOrDefaultAsync(d => d.Vehicle.Owner == nameUser);
+                if (vehicleDetails == null)
+                {
+                    return NotFound();
+                }
+
+                return View(vehicleDetails);
+            }
         }
     }
-        }
+        
     
 
