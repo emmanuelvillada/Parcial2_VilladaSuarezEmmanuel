@@ -2,7 +2,7 @@
 
 namespace Parcial3.Dal.Entities
 {
-	public class Entity
+	public class IdEntity
 	{
 		[Key]
 		[Required]

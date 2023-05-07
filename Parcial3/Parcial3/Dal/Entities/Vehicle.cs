@@ -1,25 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.Metrics;
 
 namespace Parcial3.Dal.Entities
 {
-	public class Vehicle : Entity
-	{
-		
+    public class Vehicle: IdEntity
+    {
+        
+        public Service ServiceService { get; set; }
 
-		[Display(Name = "Servicio")]		
-		public Service? Service { get; set; }
+        [Display(Name = "Propietario")]
+        public String Owner { get; set; }
 
-		[Display(Name = "Propietario")]
-		public string? Owner { get; set; }
-
-		[Display(Name ="Placa")]
-		public string? NumberPlate { get; set; }
-
-		public ICollection<VehicleDetail>? VehicleDetails { get; set; }
-
-		
-
-	}
+        [Display(Name = "Placa")]
+        public String NumberPlate { get; set; }    
+    }
 }

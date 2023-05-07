@@ -2,17 +2,15 @@
 
 namespace Parcial3.Dal.Entities
 {
-	public class VehicleDetail: Entity
-	{
-		
+    public class VehicleDetail: IdEntity
+    {
+        
+        public Vehicle Vehicle { get; set; }
 
-		[Display(Name = "Vehiculo")]
-		public Vehicle? Vehicle { get; set; }
+        [Display(Name = "Fecha de creacion")]
+        public DateTime CreationDate { get; set; }
 
-		[Display(Name = "Fecha de Creacion")]
-		public DateTime CreationDate { get; set; }
-
-		[Display(Name = "Fecha de Entrega")]
-		public DateTime DeliveryDate { get; set; }
-	}
+        [Display(Name = "Fecha de entrega")]
+        public DateTime DeliveryDate { get; set;}
+    }
 }
