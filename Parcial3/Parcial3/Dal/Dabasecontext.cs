@@ -8,9 +8,10 @@ namespace Parcial3.Dal
 {
  
 		public class DatabaseContext : IdentityDbContext<User>
-	{
+		{
 			public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
 		{
+
 		}
 
 		public DbSet<Service> Services { get; set; }
@@ -22,11 +23,12 @@ namespace Parcial3.Dal
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 			{
 				base.OnModelCreating(modelBuilder);
-				modelBuilder.Entity<Service>().HasIndex(s => s.Name).IsUnique();
-				 modelBuilder.Entity<Vehicle>().HasIndex("Name", "ServiceId").IsUnique(); 
-				modelBuilder.Entity<VehicleDetail>().HasIndex("Name", "VehicleId").IsUnique();
-				
-			}
+				modelBuilder.Entity<Service>().HasIndex(s => s.Name).IsUnique(false);
+				modelBuilder.Entity<Vehicle>().HasIndex("NumberPlate", "ServiceId").IsUnique();
+				modelBuilder.Entity<VehicleDetail>().HasIndex("CreationDate", "VehicleId").IsUnique();
+
+
+		}
 		}
 	
 

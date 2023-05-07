@@ -3,18 +3,17 @@ using System.Data.SqlTypes;
 
 namespace Parcial3.Dal.Entities
 {
-	public class Service
+	public class Service: Entity
 	{
-		[Key]
-		[Required]
-		public Guid Id { get; set; }
+		
 
 		[Display(Name = "Servicio")]
-		[Required(ErrorMessage = "El campo {0} es oblilgatorio.")]
-		public string Name { get;set; }
+		public string? Name { get;set; }
 
 		[Display (Name = "Precio")]
-		[Required(ErrorMessage = "El campo {0} es oblilgatorio.")]
-		public String Price { get; set; }
+		public String? Price { get; set; }
+
+		[Display (Name = "Vehiculos")]
+		public ICollection<Vehicle>? Vehicles { get; set; }	
 	}
 }
