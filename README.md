@@ -1,2 +1,3 @@
 # MVC
-MVC Project 
+Parcial 3, situado en la carpeta parcial 3.
+
