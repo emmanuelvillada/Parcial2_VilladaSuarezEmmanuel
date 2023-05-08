@@ -55,7 +55,7 @@ namespace Parcial3.Controllers
         // POST Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Name,Price,Id")] Service service)
+        public async Task<IActionResult> Edit(Guid id, Service service)
         {
             if (id != service.Id)
             {

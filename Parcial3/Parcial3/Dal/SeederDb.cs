@@ -30,161 +30,164 @@ namespace Parcial3.Dal
 
 
 
-		//private async Task PopulateServicesAsync()
-		//{
-		//	if (!_context.Services.Any())
-		//	{
-		//		_context.Services.Add(new Service { Name = "Lavada simple", Price = "$250000" });
-		//		_context.Services.Add(new Service { Name = "Lavada + Polishada", Price = "$50000" });
-		//		_context.Services.Add(new Service { Name = "Lavada + aspirada de la cojineria", Price = "$30000" });
-		//		_context.Services.Add(new Service { Name = "Lavada Full", Price = "$65000" });
-		//		_context.Services.Add(new Service { Name = "Lavada en seco del motor", Price = "$80000" });
-		//		_context.Services.Add(new Service { Name = "Lavada chasis", Price = "$90000" });
-
-		//	}
-		//}
-		private async Task PopulateVehiclesAsync()
-		{
-			if (!_context.Vehicles.Any())
-			{
-				_context.Vehicles.Add(new Vehicle { Owner = "Emmanuel Villada", NumberPlate = "GFE 063" });
-			}
-		}
-
-		private async Task PopulateVehiclesDetailAsync()
-		{
-			if (!_context.VehiclesDetails.Any())
-			{
-				_context.VehiclesDetails.Add(new VehicleDetail { CreationDate = DateTime.Now, });
-			}
-		}
-
 		private async Task PopulateServicesAsync()
 		{
 			if (!_context.Services.Any())
 			{
-				_context.Services.Add(new Service
-				{
-					Price = "$25.000",
-					Name = "Lavada simple",
-					Vehicles = new List<Vehicle>()
-							{
-								new Vehicle
-								{
-									Owner = "Emmanuel Villada Suárez",
-									NumberPlate = "GFE 023",
-									VehiclesDetails = new List<VehicleDetail>()
-									{
-										new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
-
-									}
-								},
-
-								new Vehicle
-								{
-									Owner = "Elon Musk",
-									NumberPlate = "TFT 568",
-									VehiclesDetails = new List<VehicleDetail>()
-									{
-										new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
-
-									}
-								}
-							}
-				});
-				_context.Services.Add(new Service
-				{
-					Price = "$50.000",
-					Name = "Lavada + polishada",
-					Vehicles = new List<Vehicle>()
-							{
-								new Vehicle
-								{
-									Owner = "Carlos",
-									NumberPlate = "JKL 789",
-									VehiclesDetails = new List<VehicleDetail>()
-									{
-										new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
-
-									}
-								},
-							}
-				});
-				_context.Services.Add(new Service
-				{
-					Price = "$30.000",
-					Name = "Lavada + aspirada de cojineria",
-					Vehicles = new List<Vehicle>()
-								  {
-									  new Vehicle
-									  {
-										  Owner = "Carlos",
-										  NumberPlate = "JKL 789",
-										  VehiclesDetails = new List<VehicleDetail>()
-										  {
-											  new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
-
-										  }
-									  },
-								  }
-				});
-				_context.Services.Add(new Service
-				{
-					Price = "$30.000",
-					Name = "Lavada Full",
-					Vehicles = new List<Vehicle>()
-								  {
-									  new Vehicle
-									  {
-										  Owner = "Sebastian",
-										  NumberPlate = "MNB 789",
-										  VehiclesDetails = new List<VehicleDetail>()
-										  {
-											  new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
-
-										  }
-									  },
-								  }
-				});
-				_context.Services.Add(new Service
-				{
-					Price = "$80.000",
-					Name = "Lavada en seco del motor",
-					Vehicles = new List<Vehicle>()
-								  {
-									  new Vehicle
-									  {
-										  Owner = "Sebastian",
-										  NumberPlate = "MNB 789",
-										  VehiclesDetails = new List<VehicleDetail>()
-										  {
-											  new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
-
-										  }
-									  },
-								  }
-				});
-				_context.Services.Add(new Service
-				{
-					Price = "$90.000",
-					Name = "Lavada chasis",
-					Vehicles = new List<Vehicle>()
-								  {
-									  new Vehicle
-									  {
-										  Owner = "Sebastian",
-										  NumberPlate = "MNB 789",
-										  VehiclesDetails = new List<VehicleDetail>()
-										  {
-											  new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
-
-										  }
-									  },
-								  }
-				});
-
+				_context.Services.Add(new Service { Name = "Lavada simple", Price = "$250000" });
+				_context.Services.Add(new Service { Name = "Lavada + Polishada", Price = "$50000" });
+				_context.Services.Add(new Service { Name = "Lavada + aspirada de la cojineria", Price = "$30000" });
+				_context.Services.Add(new Service { Name = "Lavada Full", Price = "$65000" });
+				_context.Services.Add(new Service { Name = "Lavada en seco del motor", Price = "$80000" });
+				_context.Services.Add(new Service { Name = "Lavada chasis", Price = "$90000" });
 			}
 		}
+			
+
+				//	}
+				//}
+				//private async Task PopulateVehiclesAsync()
+				//{
+				//	if (!_context.Vehicles.Any())
+				//	{
+				//		_context.Vehicles.Add(new Vehicle { Owner = "Emmanuel Villada", NumberPlate = "GFE 063" });
+				//	}
+				//}
+
+				//private async Task PopulateVehiclesDetailAsync()
+				//{
+				//	if (!_context.VehiclesDetails.Any())
+				//	{
+				//		_context.VehiclesDetails.Add(new VehicleDetail { CreationDate = DateTime.Now, });
+				//	}
+				//}
+
+				//private async Task PopulateServicesAsync()
+				//{
+				//	if (!_context.Services.Any())
+				//	{
+				//		_context.Services.Add(new Service
+				//		{
+				//			Price = "$25.000",
+				//			Name = "Lavada simple",
+				//			Vehicles = new List<Vehicle>()
+				//					{
+				//						new Vehicle
+				//						{
+				//							Owner = "Emmanuel Villada Suárez",
+				//							NumberPlate = "GFE 023",
+				//							VehiclesDetails = new List<VehicleDetail>()
+				//							{
+				//								new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
+
+				//							}
+				//						},
+
+				//						new Vehicle
+				//						{
+				//							Owner = "Elon Musk",
+				//							NumberPlate = "TFT 568",
+				//							VehiclesDetails = new List<VehicleDetail>()
+				//							{
+				//								new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
+
+				//							}
+				//						}
+				//					}
+				//		});
+				//		_context.Services.Add(new Service
+				//		{
+				//			Price = "$50.000",
+				//			Name = "Lavada + polishada",
+				//			Vehicles = new List<Vehicle>()
+				//					{
+				//						new Vehicle
+				//						{
+				//							Owner = "Carlos",
+				//							NumberPlate = "JKL 789",
+				//							VehiclesDetails = new List<VehicleDetail>()
+				//							{
+				//								new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
+
+				//							}
+				//						},
+				//					}
+				//		});
+				//		_context.Services.Add(new Service
+				//		{
+				//			Price = "$30.000",
+				//			Name = "Lavada + aspirada de cojineria",
+				//			Vehicles = new List<Vehicle>()
+				//						  {
+				//							  new Vehicle
+				//							  {
+				//								  Owner = "Carlos",
+				//								  NumberPlate = "JKL 789",
+				//								  VehiclesDetails = new List<VehicleDetail>()
+				//								  {
+				//									  new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
+
+				//								  }
+				//							  },
+				//						  }
+				//		});
+				//		_context.Services.Add(new Service
+				//		{
+				//			Price = "$30.000",
+				//			Name = "Lavada Full",
+				//			Vehicles = new List<Vehicle>()
+				//						  {
+				//							  new Vehicle
+				//							  {
+				//								  Owner = "Sebastian",
+				//								  NumberPlate = "MNB 789",
+				//								  VehiclesDetails = new List<VehicleDetail>()
+				//								  {
+				//									  new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
+
+				//								  }
+				//							  },
+				//						  }
+				//		});
+				//		_context.Services.Add(new Service
+				//		{
+				//			Price = "$80.000",
+				//			Name = "Lavada en seco del motor",
+				//			Vehicles = new List<Vehicle>()
+				//						  {
+				//							  new Vehicle
+				//							  {
+				//								  Owner = "Sebastian",
+				//								  NumberPlate = "MNB 789",
+				//								  VehiclesDetails = new List<VehicleDetail>()
+				//								  {
+				//									  new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
+
+				//								  }
+				//							  },
+				//						  }
+				//		});
+				//		_context.Services.Add(new Service
+				//		{
+				//			Price = "$90.000",
+				//			Name = "Lavada chasis",
+				//			Vehicles = new List<Vehicle>()
+				//						  {
+				//							  new Vehicle
+				//							  {
+				//								  Owner = "Sebastian",
+				//								  NumberPlate = "MNB 789",
+				//								  VehiclesDetails = new List<VehicleDetail>()
+				//								  {
+				//									  new VehicleDetail { CreationDate = DateTime.Now, DeliveryDate = DateTime.Now }
+
+				//								  }
+				//							  },
+				//						  }
+				//		});
+
+				//	}
+				//}
 
 
 
@@ -228,3 +231,5 @@ namespace Parcial3.Dal
 		}
 	}
 }
+
+
